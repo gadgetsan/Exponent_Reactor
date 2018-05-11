@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import Hello from "./Hello";
+import ProductContainer from "./Components/Containers/ProductContainer";
 import Store from "./Redux/store.js";
 import { addToCart } from "./Redux/actions/cart-actions";
 import { updateCart } from "./Redux/actions/cart-actions";
@@ -17,6 +18,7 @@ function App(props) {
       <div style={styles}>
         <Hello name="Test" other="Other Test" />
         <h4>Start typing to see some magic happen {"\u2728"}</h4>
+        <ProductContainer />
       </div>
     </Provider>
   );
