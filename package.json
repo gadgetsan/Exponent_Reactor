@@ -1,14 +1,17 @@
 {
-  "name": "new",
+  "name": "a-game-of-exponents-return",
   "version": "1.0.0",
-  "description": "",
+  "description":
+    "a small game i'm working on to learn how to use React as best as i can",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
     "react": "16.3.2",
     "react-dom": "16.3.2",
+    "react-redux": "5.0.7",
     "react-scripts": "1.1.4",
-    "redux": "4.0.0"
+    "redux": "4.0.0",
+    "redux-devtools-extension": "2.13.2"
   },
   "devDependencies": {},
   "scripts": {
