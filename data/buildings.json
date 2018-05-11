@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Solar Panel",
+    "key": "0",
+    "count": 580,
+    "inactive": 0,
+    "quantities": {
+      "0-0": 1
+    },
+    "cost": {
+      "1-2": 5
+    }
+  },
+  {
+    "name": "Electrolyser",
+    "key": "1",
+    "count": 0,
+    "inactive": 0,
+    "quantities": {
+      "0-0": -100,
+      "0-2": -2000,
+      "0-3": 1000,
+      "0-4": 2000
+    },
+    "cost": {
+      "0-3": 2,
+      "1-2": 1500,
+      "2-2": 1500
+    }
+  },
+  {
+    "name": "Water Pump",
+    "key": "2",
+    "count": 0,
+    "inactive": 0,
+    "quantities": {
+      "0-0": -20,
+      "0-2": 100
+    },
+    "cost": {
+      "1-2": 100
+    }
+  },
+  {
+    "name": "Iron Ore Extractor",
+    "key": "1-0",
+    "count": 261,
+    "inactive": 0,
+    "quantities": {
+      "0-0": -1,
+      "1-1": 1
+    },
+    "cost": {
+      "1-2": 5
+    }
+  },
+  {
+    "name": "Iron Refinery",
+    "key": "1-1",
+    "count": 50,
+    "inactive": 0,
+    "quantities": {
+      "0-0": -5,
+      "1-1": -5,
+      "1-2": 1
+    },
+    "cost": {
+      "1-2": 50
+    }
+  },
+  {
+    "name": "Copper Ore Extractor",
+    "key": "2-0",
+    "count": 1,
+    "inactive": 0,
+    "quantities": {
+      "0-0": -10,
+      "2-1": 1
+    },
+    "cost": {
+      "1-2": 100
+    }
+  },
+  {
+    "name": "Copper Refinery",
+    "key": "2-1",
+    "count": 0,
+    "inactive": 0,
+    "quantities": {
+      "0-0": -50,
+      "1-1": -10,
+      "2-2": 1
+    },
+    "cost": {
+      "1-2": 500
+    }
+  },
+  {
+    "name": "Copper Refinery",
+    "key": "2-1",
+    "count": 0,
+    "inactive": 0,
+    "quantities": {
+      "0-0": -50,
+      "1-1": -10,
+      "2-2": 1
+    },
+    "cost": {
+      "1-2": 500
+    }
+  },
+  {
+    "name": "Ammonia Extractor",
+    "key": "3-1",
+    "count": 0,
+    "inactive": 0,
+    "quantities": {
+      "0-0": -10,
+      "3-2": 10
+    },
+    "cost": {
+      "1-2": 500
+    }
+  },
+  {
+    "name": "Ammonia Burner",
+    "key": "3-2",
+    "count": 0,
+    "inactive": 0,
+    "quantities": {
+      "0-0": -25,
+      "3-2": -10,
+      "0-2": -5,
+      "0-3": -1,
+      "0-4": 1,
+      "3-1": 5
+    },
+    "cost": {
+      "1-2": 500
+    }
+  }
+]
