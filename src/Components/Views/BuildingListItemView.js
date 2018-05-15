@@ -1,25 +1,39 @@
 import React from "react";
+import MiniRessourceContainer from "../Containers/MiniRessourceContainer";
 
-export default props => {
+export default function BuildingListItemView(props) {
   return (
     <tr>
       <td>
-        <strong>Electrolyser</strong>
+        <strong>{props.building.name}</strong>
       </td>
-      <td>1-0</td>
+      <td>{props.building.key}</td>
       <td>
-        <span className="col-blue">
-          <i className="material-icons">invert_colors</i> Water
-        </span>
+        {Object.keys(props.building.quantities).map(function(key) {
+          if (props.building.quantities[key] < 0) {
+            return (
+              <MiniRessourceContainer
+                key={key}
+                id={key}
+                quantity={-props.building.quantities[key]}
+              />
+            );
+          }
+        })}
       </td>
       <td>
-        <span className="col-cyan">
-          <i className="material-icons">toll</i> Oxygen
-        </span>
-        <span className="col-orange">
-          <i className="material-icons">toll</i> Hydrogen
-        </span>
+        {Object.keys(props.building.quantities).map(function(key) {
+          if (props.building.quantities[key] > 0) {
+            return (
+              <MiniRessourceContainer
+                key={key}
+                id={key}
+                quantity={props.building.quantities[key]}
+              />
+            );
+          }
+        })}
       </td>
     </tr>
   );
-};
+}

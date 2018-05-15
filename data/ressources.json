@@ -19,7 +19,8 @@
     "key": "0-2",
     "quantity": 0,
     "unit": "l",
-    "icon": "opacity"
+    "icon": "opacity",
+    "color": "blue"
   },
   {
     "name": "Oxygen",

@@ -5,7 +5,10 @@ import { Provider } from "react-redux";
 /*STORE*/
 import Store from "./Redux/store.js";
 /*COMPONENTS*/
-import BuildingListView from "./Components/Views/BuildingListView";
+import BuildingListContainer from "./Components/Containers/BuildingListContainer";
+import ContentSection from "./Components/UI/ContentSection";
+import ContentSubSection from "./Components/UI/ContentSubSection";
+import ListSubSection from "./Components/UI/ListSubSection";
 
 const styles = {
   textAlign: "center"
@@ -16,7 +19,13 @@ function App(props) {
     <Provider store={Store}>
       <div style={styles}>
         <h4>Start typing to see some magic happen {"\u2728"}</h4>
-        <BuildingListView />
+        <ContentSection>
+          <ContentSubSection>
+            <ListSubSection name="Buildings">
+              <BuildingListContainer />
+            </ListSubSection>
+          </ContentSubSection>
+        </ContentSection>
       </div>
     </Provider>
   );

@@ -96,20 +96,6 @@
     }
   },
   {
-    "name": "Copper Refinery",
-    "key": "2-1",
-    "count": 0,
-    "inactive": 0,
-    "quantities": {
-      "0-0": -50,
-      "1-1": -10,
-      "2-2": 1
-    },
-    "cost": {
-      "1-2": 500
-    }
-  },
-  {
     "name": "Ammonia Extractor",
     "key": "3-1",
     "count": 0,
