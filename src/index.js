@@ -2,13 +2,19 @@
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
+
 /*STORE*/
 import Store from "./Redux/store.js";
+
 /*COMPONENTS*/
 import BuildingListContainer from "./Components/Containers/BuildingListContainer";
+import RessourceListContainer from "./Components/Containers/RessourceListContainer";
 import ContentSection from "./Components/UI/ContentSection";
 import ContentSubSection from "./Components/UI/ContentSubSection";
 import ListSubSection from "./Components/UI/ListSubSection";
+
+/*Intelligence / Backend*/
+import BuildingsBackend from "./Components/Backend/Buildings-Backend";
 
 const styles = {
   textAlign: "center"
@@ -18,11 +24,16 @@ function App(props) {
   return (
     <Provider store={Store}>
       <div style={styles}>
-        <h4>Start typing to see some magic happen {"\u2728"}</h4>
+        <BuildingsBackend />
         <ContentSection>
-          <ContentSubSection>
+          <ContentSubSection size="8">
             <ListSubSection name="Buildings">
               <BuildingListContainer />
+            </ListSubSection>
+          </ContentSubSection>
+          <ContentSubSection size="4">
+            <ListSubSection name="Ressources">
+              <RessourceListContainer />
             </ListSubSection>
           </ContentSubSection>
         </ContentSection>
@@ -30,5 +41,4 @@ function App(props) {
     </Provider>
   );
 }
-
 render(<App />, document.getElementById("root"));

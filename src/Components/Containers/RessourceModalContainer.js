@@ -1,20 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import MiniRessourceView from "../Views/MiniRessourceView";
+
+import RessourceModalView from "../Views/RessourceModalView";
 
 const mapStateToProps = function(state, ownProps) {
   return {
-    ressource: state.ressources[ownProps.id]
+    ressources: state.ressources,
+    id: ownProps.id
   };
 };
 
 const render = props => {
   return (
-    <MiniRessourceView
-      ressource={props.ressource}
-      quantity={props.quantity}
-      id={props.id}
-    />
+    <RessourceModalView ressource={props.ressources[props.id]} id={props.id} />
   );
 };
 
