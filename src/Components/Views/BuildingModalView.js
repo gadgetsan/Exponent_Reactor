@@ -1,6 +1,6 @@
 import React from "react";
 
-import ActiveStatus from "../../Components/UI/ActiveStatus";
+import BuildingStatus from "../../Components/UI/BuildingStatus";
 import BuildingBuildButtonContainer from "../../Components/Containers/BuildingBuildButtonContainer";
 
 export default class BuildingModalView extends React.Component {
@@ -27,8 +27,8 @@ export default class BuildingModalView extends React.Component {
                 <b>Quantity: </b>
                 {this.props.building.count}
                 <br />
-                <b>State: </b>
-                <ActiveStatus value={this.props.building.active} />
+                <b>Efficiency: </b>
+                <BuildingStatus building={this.props.building} />
                 <br />
                 <br />
                 <BuildingBuildButtonContainer id={this.props.id} />

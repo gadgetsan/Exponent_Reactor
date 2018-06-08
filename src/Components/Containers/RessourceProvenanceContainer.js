@@ -10,7 +10,13 @@ const mapStateToProps = function(state, ownProps) {
 };
 
 const render = props => {
-  return <RessourceProvenanceView buildings={props.buildings} id={props.id} />;
+  return (
+    <RessourceProvenanceView
+      buildings={props.buildings}
+      ressource={props.ressource}
+      id={props.id}
+    />
+  );
 };
 
 export default connect(mapStateToProps, {})(render);

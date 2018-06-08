@@ -1,5 +1,7 @@
 import React from "react";
 
+import SIDisplay from "../../Components/UI/SIDisplay";
+
 export default class RessourceProvenanceView extends React.Component {
   render() {
     var self = this;
@@ -20,11 +22,24 @@ export default class RessourceProvenanceView extends React.Component {
                   <span href="#!" className="secondary-content">
                     {building.quantities[self.props.id] > 0 ? (
                       <span className="green-text">
-                        {building.quantities[self.props.id] * building.count}
+                        <SIDisplay
+                          value={
+                            building.quantities[self.props.id] * building.count
+                          }
+                          unit={self.props.ressource.unit}
+                        />
                       </span>
                     ) : (
                       <span className="red-text">
-                        {building.quantities[self.props.id] * building.count}
+                        -
+                        <SIDisplay
+                          value={
+                            building.quantities[self.props.id] *
+                            building.count *
+                            -1
+                          }
+                          unit={self.props.ressource.unit}
+                        />
                       </span>
                     )}
                   </span>
@@ -39,11 +54,12 @@ export default class RessourceProvenanceView extends React.Component {
             <span href="#!" className="secondary-content">
               {sum > 0 ? (
                 <span className="green-text">
-                  <b>{sum}</b>
+                  <SIDisplay value={sum} unit={self.props.ressource.unit} />
                 </span>
               ) : (
                 <span className="red-text">
-                  <b>{sum}</b>
+                  -
+                  <SIDisplay value={-sum} unit={self.props.ressource.unit} />
                 </span>
               )}
             </span>

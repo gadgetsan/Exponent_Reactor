@@ -1,7 +1,7 @@
 [
   {
     "name": "Solar Panel",
-    "count": 590,
+    "count": 100000,
     "active": 1,
     "quantities": {
       "0": 1
@@ -13,7 +13,7 @@
   {
     "name": "Electrolyser",
     "count": 0,
-    "active": 0,
+    "active": 1,
     "quantities": {
       "0": -100,
       "2": -2000,
@@ -29,7 +29,7 @@
   {
     "name": "Water Pump",
     "count": 0,
-    "active": 0,
+    "active": 1,
     "quantities": {
       "0": -20,
       "2": 100
@@ -41,13 +41,13 @@
   {
     "name": "Iron Ore Extractor",
     "count": 1,
-    "active": 0,
+    "active": 1,
     "quantities": {
       "0": -1,
-      "5": 1
+      "5": 1000
     },
     "cost": {
-      "6": 5
+      "6": 5000
     }
   },
   {
@@ -56,8 +56,8 @@
     "active": 1,
     "quantities": {
       "0": -5,
-      "5": -5,
-      "6": 1
+      "5": -5000,
+      "6": 1000
     },
     "cost": {
       "6": 50
@@ -66,7 +66,7 @@
   {
     "name": "Copper Ore Extractor",
     "count": 1,
-    "active": 0,
+    "active": 1,
     "quantities": {
       "0": -10,
       "7": 1
@@ -78,7 +78,7 @@
   {
     "name": "Copper Refinery",
     "count": 0,
-    "active": 0,
+    "active": 1,
     "quantities": {
       "0": -50,
       "5": -10,
@@ -91,7 +91,7 @@
   {
     "name": "Ammonia Extractor",
     "count": 0,
-    "active": 0,
+    "active": 1,
     "quantities": {
       "0": -10,
       "10": 10
@@ -103,7 +103,7 @@
   {
     "name": "Ammonia Burner",
     "count": 0,
-    "active": 0,
+    "active": 1,
     "quantities": {
       "0": -25,
       "10": -10,

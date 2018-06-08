@@ -34,7 +34,10 @@ export default class RessourceModalView extends React.Component {
               <p />
             </div>
             <div className="col s8">
-              <RessourceProvenanceContainer id={this.props.id} />
+              <RessourceProvenanceContainer
+                id={this.props.id}
+                ressource={this.props.ressource}
+              />
             </div>
           </div>
         </div>

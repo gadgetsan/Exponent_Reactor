@@ -1,5 +1,7 @@
 import React from "react";
 
+import SIDisplay from "../../Components/UI/SIDisplay";
+
 export default class MiniRessourceView extends React.Component {
   componentDidMount() {
     var elems = document.querySelectorAll(".tooltipped");
@@ -26,7 +28,10 @@ export default class MiniRessourceView extends React.Component {
           data-tooltip={this.props.ressource.name}
         >
           <i className={"badge-img fa fa-" + this.props.ressource.icon} />
-          {this.props.quantity} {this.props.ressource.unit}
+          <SIDisplay
+            value={this.props.quantity}
+            unit={this.props.ressource.unit}
+          />
         </span>
       );
     }

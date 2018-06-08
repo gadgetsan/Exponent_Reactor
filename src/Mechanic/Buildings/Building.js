@@ -27,6 +27,7 @@ module.exports = class Building {
     for (var id in this.quantities) {
       mutatedState.ressources[id].quantity += this.quantities[id] * processNum;
     }
+    this.active = processNum;
 
     return mutatedState;
   }

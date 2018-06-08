@@ -50,6 +50,9 @@ export default function(state = initialState, action) {
         ...state,
         ressources: mutatedState.ressources.map(ressource => {
           return ressource;
+        }),
+        buildings: mutatedState.buildings.map(building => {
+          return building;
         })
       };
     }

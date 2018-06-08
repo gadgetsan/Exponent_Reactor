@@ -9,7 +9,7 @@
   {
     "name": "Coal",
     "quantity": 0,
-    "unit": "kg",
+    "unit": "g",
     "icon": "certificate"
   },
   {
@@ -36,28 +36,28 @@
   {
     "name": "Iron Ore",
     "quantity": 0,
-    "unit": "kg",
+    "unit": "g",
     "icon": "certificate",
     "color": "grey"
   },
   {
     "name": "Iron",
     "quantity": 150,
-    "unit": "kg",
+    "unit": "g",
     "icon": "adjust",
     "color": "grey"
   },
   {
     "name": "Copper Ore",
     "quantity": 0,
-    "unit": "kg",
+    "unit": "g",
     "icon": "certificate",
     "color": "orange"
   },
   {
     "name": "Copper",
     "quantity": 0,
-    "unit": "kg",
+    "unit": "g",
     "icon": "adjust",
     "color": "orange"
   },
@@ -86,14 +86,14 @@
   {
     "name": "Ammonium Nitrate",
     "quantity": 0,
-    "unit": "kg",
+    "unit": "g",
     "icon": "square",
     "color": "green"
   },
   {
     "name": "Fertilizer",
     "quantity": 0,
-    "unit": "kg",
+    "unit": "g",
     "icon": "gem",
     "color": "green"
   }
