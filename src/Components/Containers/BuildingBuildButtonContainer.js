@@ -6,7 +6,8 @@ import { buildBuilding } from "../../Redux/actions/buildings-actions";
 
 const mapStateToProps = function(state, ownProps) {
   return {
-    buildings: state.buildings
+    buildings: state.buildings,
+    ressources: state.ressources
   };
 };
 
@@ -22,6 +23,7 @@ const render = props => {
   return (
     <BuildingBuildButtonView
       building={props.buildings[props.id]}
+      ressources={props.ressources}
       build={props.build}
     />
   );

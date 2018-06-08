@@ -7,6 +7,7 @@ module.exports = class Building {
     this.quantities = meta.quantities;
     this.active = meta.active;
   }
+
   tick(delay, oldState, mutatedState) {
     //on va commencer par aller voir le processus de production pour savoir quelle quantité de ce building vont être mis en operation
 
@@ -28,5 +29,25 @@ module.exports = class Building {
     }
 
     return mutatedState;
+  }
+
+  build(quantity, oldState, mutatedState) {
+    //on commence par payer le cout
+    for (var ressourceId in this.cost) {
+      mutatedState.ressources[ressourceId].quantity -= this.cost[ressourceId];
+    }
+    this.count += quantity;
+    return mutatedState;
+  }
+
+  canBeBuilt(ressources) {
+    //on va aller voir chaque ressources du cost pour voir si on en as assez
+    var enoughRessources = true;
+    for (var ressourceId in this.cost) {
+      if (ressources[ressourceId].quantity < this.cost[ressourceId]) {
+        enoughRessources = false;
+      }
+    }
+    return enoughRessources;
   }
 };

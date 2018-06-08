@@ -55,9 +55,13 @@ export default function(state = initialState, action) {
     }
     case BUILD_BUILDING: {
       var mutatedState = Object.assign({}, state);
-      mutatedState.buildings[action.payload.buildingId].count++;
+      var building = state.buildings[action.payload.buildingId];
+      mutatedState = building.build(1, state, mutatedState);
       return {
         ...state,
+        ressources: mutatedState.ressources.map(ressource => {
+          return ressource;
+        }),
         buildings: mutatedState.buildings.map(building => {
           return building;
         })
