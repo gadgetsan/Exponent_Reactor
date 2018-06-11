@@ -115,5 +115,17 @@
     "cost": {
       "6": 500
     }
+  },
+  {
+    "name": "Research Lab",
+    "type": "lab",
+    "count": 0,
+    "active": 1,
+    "quantities": {
+      "0": -25
+    },
+    "cost": {
+      "6": 500
+    }
   }
 ]

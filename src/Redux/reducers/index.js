@@ -20,15 +20,7 @@ export default rootReducer;
 
 import { BUILDINGS_TICK, BUILD_BUILDING } from "../actions/buildings-actions";
 import { META_SAVE, META_LOAD } from "../actions/meta-actions";
-import Building from "../../Mechanic/Buildings/Building";
-
-var fs = require("fs");
-var buildings = JSON.parse(
-  fs.readFileSync("../../data/buildings.json", "utf8")
-);
-var ressources = JSON.parse(
-  fs.readFileSync("../../data/ressources.json", "utf8")
-);
+import BuildingFactory from "../../Mechanic/Buildings/BuildingFactory";
 
 var sessionStorage = localStorage.getItem("Reactor");
 var initialState = {};
@@ -36,15 +28,22 @@ if (sessionStorage != null) {
   initialState = {
     ressources: JSON.parse(sessionStorage).ressources,
     buildings: JSON.parse(sessionStorage).buildings.map(buildingMeta => {
-      return new Building(buildingMeta);
+      return BuildingFactory(buildingMeta);
     }),
     session: sessionStorage
   };
 } else {
+  var fs = require("fs");
+  var buildings = JSON.parse(
+    fs.readFileSync("../../data/buildings.json", "utf8")
+  );
+  var ressources = JSON.parse(
+    fs.readFileSync("../../data/ressources.json", "utf8")
+  );
   initialState = {
     ressources: ressources,
     buildings: buildings.map(buildingMeta => {
-      return new Building(buildingMeta);
+      return BuildingFactory(buildingMeta);
     })
   };
 }
@@ -113,7 +112,7 @@ export default function(state = initialState, action) {
         ),
         buildings: JSON.parse(mutatedState.session).buildings.map(
           buildingMeta => {
-            return new Building(buildingMeta);
+            return BuildingFactory(buildingMeta);
           }
         )
       };
