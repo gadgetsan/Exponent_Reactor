@@ -8,6 +8,7 @@ import Store from "./Redux/store.js";
 
 /*COMPONENTS*/
 import BuildingListContainer from "./Components/Containers/BuildingListContainer";
+import MetaControlContainer from "./Components/Containers/MetaControlContainer";
 import RessourceListContainer from "./Components/Containers/RessourceListContainer";
 import ContentSection from "./Components/UI/ContentSection";
 import ContentSubSection from "./Components/UI/ContentSubSection";
@@ -26,6 +27,7 @@ function App(props) {
       <div style={styles}>
         <BuildingsBackend />
         <ContentSection>
+          <MetaControlContainer />
           <ContentSubSection size="8">
             <ListSubSection name="Buildings">
               <BuildingListContainer />

@@ -42,7 +42,7 @@
   },
   {
     "name": "Iron",
-    "quantity": 150,
+    "quantity": 150000,
     "unit": "g",
     "icon": "adjust",
     "color": "grey"

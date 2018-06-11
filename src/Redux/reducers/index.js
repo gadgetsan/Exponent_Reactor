@@ -17,7 +17,9 @@ const rootReducer = combineReducers(allReducers);
 export default rootReducer;
 */
 /*=====TENTATIVE DDE COMBINER LES REDUCER ENSEMBLE PARCE QU'ILS SEMBLENT ÊTRE TOUS RELISÉ*/
+
 import { BUILDINGS_TICK, BUILD_BUILDING } from "../actions/buildings-actions";
+import { META_SAVE, META_LOAD } from "../actions/meta-actions";
 import Building from "../../Mechanic/Buildings/Building";
 
 var fs = require("fs");
@@ -28,12 +30,24 @@ var ressources = JSON.parse(
   fs.readFileSync("../../data/ressources.json", "utf8")
 );
 
-var initialState = {
-  buildings: buildings.map(buildingMeta => {
-    return new Building(buildingMeta);
-  }),
-  ressources: ressources
-};
+var sessionStorage = localStorage.getItem("Reactor");
+var initialState = {};
+if (sessionStorage != null) {
+  initialState = {
+    ressources: JSON.parse(sessionStorage).ressources,
+    buildings: JSON.parse(sessionStorage).buildings.map(buildingMeta => {
+      return new Building(buildingMeta);
+    }),
+    session: sessionStorage
+  };
+} else {
+  initialState = {
+    ressources: ressources,
+    buildings: buildings.map(buildingMeta => {
+      return new Building(buildingMeta);
+    })
+  };
+}
 
 export default function(state = initialState, action) {
   switch (action.type) {
@@ -69,6 +83,41 @@ export default function(state = initialState, action) {
           return building;
         })
       };
+    }
+    case META_SAVE: {
+      console.log("SAVE");
+      var mutatedState = JSON.parse(JSON.stringify(state));
+
+      var sessionObject = JSON.stringify({
+        ressources: state.ressources,
+        buildings: state.buildings
+      });
+
+      localStorage.setItem("Reactor", sessionObject);
+      return {
+        ...state,
+        session: sessionObject
+      };
+      break;
+    }
+    case META_LOAD: {
+      console.log("LOAD");
+      var mutatedState = Object.assign({}, state);
+      console.dir(mutatedState.session);
+      return {
+        ...state,
+        ressources: JSON.parse(mutatedState.session).ressources.map(
+          ressource => {
+            return ressource;
+          }
+        ),
+        buildings: JSON.parse(mutatedState.session).buildings.map(
+          buildingMeta => {
+            return new Building(buildingMeta);
+          }
+        )
+      };
+      break;
     }
     default:
       return state;

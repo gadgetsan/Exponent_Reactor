@@ -6,9 +6,8 @@ export default function BuildingListView(props) {
     <thead key="0">
       <tr>
         <th>Name</th>
-        <th>Code</th>
-        <th>Input</th>
-        <th>Output</th>
+        <th>Quantity</th>
+        <th>Efficiency</th>
         <th />
       </tr>
     </thead>,

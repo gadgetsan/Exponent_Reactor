@@ -40,7 +40,7 @@
   },
   {
     "name": "Iron Ore Extractor",
-    "count": 1,
+    "count": 100,
     "active": 1,
     "quantities": {
       "0": -1,
@@ -60,7 +60,7 @@
       "6": 1000
     },
     "cost": {
-      "6": 50
+      "6": 50000
     }
   },
   {

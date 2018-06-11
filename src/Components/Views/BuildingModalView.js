@@ -2,6 +2,7 @@ import React from "react";
 
 import BuildingStatus from "../../Components/UI/BuildingStatus";
 import BuildingBuildButtonContainer from "../../Components/Containers/BuildingBuildButtonContainer";
+import MiniRessourceContainer from "../Containers/MiniRessourceContainer";
 
 export default class BuildingModalView extends React.Component {
   componentDidMount() {
@@ -10,6 +11,7 @@ export default class BuildingModalView extends React.Component {
   }
 
   render() {
+    var self = this;
     return [
       <a
         className="waves-effect waves-light btn-small modal-trigger"
@@ -22,7 +24,7 @@ export default class BuildingModalView extends React.Component {
         <div className="modal-content">
           <h4>{this.props.building.name}</h4>
           <div className="row">
-            <div className="col s8">
+            <div className="col s6">
               <p>
                 <b>Quantity: </b>
                 {this.props.building.count}
@@ -34,7 +36,53 @@ export default class BuildingModalView extends React.Component {
                 <BuildingBuildButtonContainer id={this.props.id} />
               </p>
             </div>
-            <div className="col s4">
+            <div className="col s6">
+              <div>Input: </div>
+              <div>
+                {Object.keys(self.props.building.quantities)
+                  .filter(oneKey => {
+                    return self.props.building.quantities[oneKey] < 0;
+                  })
+                  .map(function(key) {
+                    return (
+                      <MiniRessourceContainer
+                        key={key}
+                        id={key}
+                        quantity={-self.props.building.quantities[key]}
+                      />
+                    );
+                  })
+                  .reduce((accu, elem) => {
+                    if (accu === null) {
+                      return [elem];
+                    }
+                    return [accu, elem];
+                  }, null)}
+              </div>
+              <div>Output: </div>
+              <div>
+                {Object.keys(self.props.building.quantities)
+                  .filter(oneKey => {
+                    return self.props.building.quantities[oneKey] > 0;
+                  })
+                  .map(function(key) {
+                    return (
+                      <MiniRessourceContainer
+                        key={key}
+                        id={key}
+                        quantity={self.props.building.quantities[key]}
+                      />
+                    );
+                  })
+                  .reduce((accu, elem) => {
+                    if (accu === null) {
+                      return [elem];
+                    }
+                    return [accu, elem];
+                  }, null)}
+              </div>
+            </div>
+            <div className="col s6">
               <p>{JSON.stringify(this.props)}</p>
             </div>
           </div>
