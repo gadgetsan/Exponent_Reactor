@@ -6,8 +6,8 @@ import MiniRessourceContainer from "../Containers/MiniRessourceContainer";
 
 export default class BuildingModalView extends React.Component {
   componentDidMount() {
-    var elems = document.querySelectorAll(".modal");
-    var instances = M.Modal.init(elems, {});
+    var elems = document.querySelectorAll(".buildingsModal");
+    var instances = M.Modal.init(elems, { preventScrolling: false });
   }
 
   render() {
@@ -20,7 +20,11 @@ export default class BuildingModalView extends React.Component {
       >
         INFO
       </a>,
-      <div id={"buildingModal" + this.props.id} className="modal" key="1">
+      <div
+        id={"buildingModal" + this.props.id}
+        className="modal buildingsModal"
+        key="1"
+      >
         {this.props.building.getModal(this.props.id)}
         <div className="modal-footer">
           <a

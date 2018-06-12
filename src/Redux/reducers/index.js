@@ -18,8 +18,22 @@ export default rootReducer;
 */
 /*=====TENTATIVE DDE COMBINER LES REDUCER ENSEMBLE PARCE QU'ILS SEMBLENT ÊTRE TOUS RELISÉ*/
 
-import { BUILDINGS_TICK, BUILD_BUILDING } from "../actions/buildings-actions";
-import { META_SAVE, META_LOAD } from "../actions/meta-actions";
+import {
+  BUILDINGS_TICK,
+  BUILDING_TICK_REDUCER,
+  BUILD_BUILDING,
+  BUILD_BUILDING_REDUCER
+} from "../actions/buildings-actions";
+
+import {
+  META_SAVE,
+  META_SAVE_REDUCER,
+  META_LOAD,
+  META_LOAD_REDUCER,
+  META_CLEAR,
+  META_CLEAR_REDUCER
+} from "../actions/meta-actions";
+
 import BuildingFactory from "../../Mechanic/Buildings/BuildingFactory";
 
 var sessionStorage = localStorage.getItem("Reactor");
@@ -27,10 +41,11 @@ var initialState = {};
 if (sessionStorage != null) {
   initialState = {
     ressources: JSON.parse(sessionStorage).ressources,
-    buildings: JSON.parse(sessionStorage).buildings.map(buildingMeta => {
-      return BuildingFactory(buildingMeta);
-    }),
-    session: sessionStorage
+    buildings: JSON.parse(sessionStorage).buildings.map(
+      (buildingMeta, index) => {
+        return BuildingFactory(buildingMeta, index);
+      }
+    )
   };
 } else {
   var fs = require("fs");
@@ -42,8 +57,8 @@ if (sessionStorage != null) {
   );
   initialState = {
     ressources: ressources,
-    buildings: buildings.map(buildingMeta => {
-      return BuildingFactory(buildingMeta);
+    buildings: buildings.map((buildingMeta, index) => {
+      return BuildingFactory(buildingMeta, index);
     })
   };
 }
@@ -51,71 +66,23 @@ if (sessionStorage != null) {
 export default function(state = initialState, action) {
   switch (action.type) {
     case BUILDINGS_TICK: {
-      //pour chaque buuilding de notre Etat, on va effectuer son tick
-      var mutatedState = Object.assign({}, state);
-      for (var i in state.buildings) {
-        var building = state.buildings[i];
-        //console.dir(building);
-        mutatedState = building.tick(1, state, mutatedState);
-      }
-      //J'ai l'impression que c'est une passe-passe...
-      return {
-        ...state,
-        ressources: mutatedState.ressources.map(ressource => {
-          return ressource;
-        }),
-        buildings: mutatedState.buildings.map(building => {
-          return building;
-        })
-      };
+      return BUILDING_TICK_REDUCER(state, action);
+      break;
     }
     case BUILD_BUILDING: {
-      var mutatedState = Object.assign({}, state);
-      var building = state.buildings[action.payload.buildingId];
-      mutatedState = building.build(1, state, mutatedState);
-      return {
-        ...state,
-        ressources: mutatedState.ressources.map(ressource => {
-          return ressource;
-        }),
-        buildings: mutatedState.buildings.map(building => {
-          return building;
-        })
-      };
+      return BUILD_BUILDING_REDUCER(state, action);
+      break;
     }
     case META_SAVE: {
-      console.log("SAVE");
-      var mutatedState = JSON.parse(JSON.stringify(state));
-
-      var sessionObject = JSON.stringify({
-        ressources: state.ressources,
-        buildings: state.buildings
-      });
-
-      localStorage.setItem("Reactor", sessionObject);
-      return {
-        ...state,
-        session: sessionObject
-      };
+      return META_SAVE_REDUCER(state, action);
       break;
     }
     case META_LOAD: {
-      console.log("LOAD");
-      var mutatedState = Object.assign({}, state);
-      console.dir(mutatedState.session);
-      return {
-        ...state,
-        ressources: JSON.parse(mutatedState.session).ressources.map(
-          ressource => {
-            return ressource;
-          }
-        ),
-        buildings: JSON.parse(mutatedState.session).buildings.map(
-          buildingMeta => {
-            return BuildingFactory(buildingMeta);
-          }
-        )
-      };
+      return META_LOAD_REDUCER(state, action);
+      break;
+    }
+    case META_CLEAR: {
+      return META_CLEAR_REDUCER(state, action);
       break;
     }
     default:

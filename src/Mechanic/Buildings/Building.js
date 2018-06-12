@@ -5,9 +5,9 @@ import BuildingBuildButtonContainer from "../../Components/Containers/BuildingBu
 import MiniRessourceContainer from "../../Components/Containers/MiniRessourceContainer";
 
 module.exports = class Building {
-  constructor(meta) {
+  constructor(meta, id) {
     this.name = meta.name;
-    this.key = meta.key;
+    this.id = id;
     this.count = meta.count;
     this.cost = meta.cost;
     this.quantities = meta.quantities;

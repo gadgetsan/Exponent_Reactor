@@ -14,7 +14,7 @@ export default function BuildingListItemView(props) {
         <BuildingStatus building={props.building} />
       </td>
       <td>
-        <BuildingModalContainer id={props.id} />
+        <BuildingModalContainer id={props.building.id} />
       </td>
     </tr>
   );

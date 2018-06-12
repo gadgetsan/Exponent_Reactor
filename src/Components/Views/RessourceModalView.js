@@ -4,8 +4,8 @@ import RessourceProvenanceContainer from "../Containers/RessourceProvenanceConta
 
 export default class RessourceModalView extends React.Component {
   componentDidMount() {
-    var elems = document.querySelectorAll(".modal");
-    var instances = M.Modal.init(elems, {});
+    var elems = document.querySelectorAll(".ressourcesModal");
+    var instances = M.Modal.init(elems, { preventScrolling: false });
   }
 
   render() {
@@ -17,7 +17,11 @@ export default class RessourceModalView extends React.Component {
       >
         INFO
       </a>,
-      <div id={"ressourceModal" + this.props.id} className="modal" key="1">
+      <div
+        id={"ressourceModal" + this.props.id}
+        className="modal ressourcesModal"
+        key="1"
+      >
         <div className="modal-content">
           <h4>{this.props.ressource.name}</h4>
           <div className="row">

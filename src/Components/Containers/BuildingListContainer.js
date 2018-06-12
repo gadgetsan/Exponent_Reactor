@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import BuildingListView from "../Views/BuildingListView";
 
-const mapStateToProps = function(state) {
+const mapStateToProps = function(state, ownProps) {
   return {
-    buildings: state.buildings
+    buildings: state.buildings.filter(ownProps.filter)
   };
 };
 

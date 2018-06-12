@@ -12,7 +12,10 @@ import MetaControlContainer from "./Components/Containers/MetaControlContainer";
 import RessourceListContainer from "./Components/Containers/RessourceListContainer";
 import ContentSection from "./Components/UI/ContentSection";
 import ContentSubSection from "./Components/UI/ContentSubSection";
-import ListSubSection from "./Components/UI/ListSubSection";
+import SubSectionHeader from "./Components/UI/SubSectionHeader";
+import SubSectionBody from "./Components/UI/SubSectionBody";
+import TableElement from "./Components/UI/TableElement";
+import TabElement from "./Components/UI/TabElement";
 
 /*Intelligence / Backend*/
 import BuildingsBackend from "./Components/Backend/Buildings-Backend";
@@ -29,14 +32,33 @@ function App(props) {
         <ContentSection>
           <MetaControlContainer />
           <ContentSubSection size="8">
-            <ListSubSection name="Buildings">
-              <BuildingListContainer />
-            </ListSubSection>
+            <SubSectionHeader name="Buildings" />
+            <SubSectionBody>
+              <TabElement
+                tabs={[
+                  {
+                    name: "Current",
+                    component: (
+                      <BuildingListContainer filter={b => b.count > 0} />
+                    )
+                  },
+                  {
+                    name: "Unused",
+                    component: (
+                      <BuildingListContainer filter={b => b.count < 1} />
+                    )
+                  }
+                ]}
+              />
+            </SubSectionBody>
           </ContentSubSection>
           <ContentSubSection size="4">
-            <ListSubSection name="Ressources">
-              <RessourceListContainer />
-            </ListSubSection>
+            <SubSectionHeader name="Ressources" />
+            <SubSectionBody>
+              <TableElement>
+                <RessourceListContainer />
+              </TableElement>
+            </SubSectionBody>
           </ContentSubSection>
         </ContentSection>
       </div>
