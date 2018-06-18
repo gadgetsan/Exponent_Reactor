@@ -7,7 +7,7 @@ module.exports = class Ressource {
     this.unit = meta.unit;
     this.icon = meta.icon;
     this.color = meta.color;
-    this.quota = meta.quota != undefined ? parseInt(meta.quota) : 0;
+    this.quota = meta.quota == undefined ? 0 : meta.quota;
     this.id = meta.id;
   }
 
@@ -18,11 +18,9 @@ module.exports = class Ressource {
     }
     if (this.quantity + quantity < this.quota || this.quota == 0) {
       this.quantity += quantity;
-      console.log("NOT FULL");
       return true;
     } else {
       this.quantity = this.quota;
-      console.log("IS FULL");
       return false;
     }
   }

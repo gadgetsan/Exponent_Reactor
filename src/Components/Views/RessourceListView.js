@@ -11,9 +11,15 @@ export default function RessourceListView(props) {
     </thead>,
     <tbody key="1">
       {props.ressources.map(function(ressource, index) {
-        return (
-          <RessourceListItemView ressource={ressource} key={index} id={index} />
-        );
+        if (ressource.quantity > 0) {
+          return (
+            <RessourceListItemView
+              ressource={ressource}
+              key={index}
+              id={index}
+            />
+          );
+        }
       })}
     </tbody>
   ];

@@ -1,6 +1,7 @@
 import React from "react";
 import MiniRessourceContainer from "../Containers/MiniRessourceContainer";
 import RessourceProvenanceContainer from "../Containers/RessourceProvenanceContainer";
+import SIDisplay from "../../Components/UI/SIDisplay";
 
 export default class RessourceModalView extends React.Component {
   componentDidMount() {
@@ -32,6 +33,14 @@ export default class RessourceModalView extends React.Component {
                   id={this.props.id}
                   quantity={this.props.ressource.quantity}
                 />
+                <small>
+                  {" "}
+                  /{" "}
+                  <SIDisplay
+                    value={this.props.ressource.quota}
+                    unit={this.props.ressource.unit}
+                  />
+                </small>
               </p>
             </div>
             <div className="col s4">

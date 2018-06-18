@@ -4,7 +4,10 @@ import BuildingListView from "../Views/BuildingListView";
 
 const mapStateToProps = function(state, ownProps) {
   return {
-    buildings: state.buildings.filter(ownProps.filter)
+    buildings:
+      ownProps.filter == undefined
+        ? state.buildings
+        : state.buildings.filter(ownProps.filter)
   };
 };
 
