@@ -12,11 +12,20 @@ module.exports = class Building {
     this.cost = meta.cost;
     this.quantities = meta.quantities;
     this.active = meta.active;
+    this.type = meta.type;
   }
 
   tick(delay, oldState, mutatedState) {
     //on va commencer par aller voir le processus de production pour savoir quelle quantité de ce building vont être mis en operation
 
+    //on va aller voir si on avais une construction
+    if (
+      this.construction != undefined &&
+      this.construction.end < new Date().getTime()
+    ) {
+      this.construct(this.construction.quantity, oldState, mutatedState);
+      this.construction = undefined;
+    }
     var processNum = this.count;
     for (var id in this.quantities) {
       if (this.quantities[id] < 0) {
@@ -31,11 +40,15 @@ module.exports = class Building {
       }
     }
     for (var id in this.quantities) {
-      mutatedState.ressources[id].quantity += this.quantities[id] * processNum;
+      mutatedState.ressources[id].fill(this.quantities[id] * processNum);
     }
     this.active = processNum;
 
     return mutatedState;
+  }
+
+  construct(quantity, oldState, mutatedState) {
+    this.count += quantity;
   }
 
   build(quantity, oldState, mutatedState) {
@@ -43,15 +56,22 @@ module.exports = class Building {
     for (var ressourceId in this.cost) {
       mutatedState.ressources[ressourceId].quantity -= this.cost[ressourceId];
     }
-    this.count += quantity;
+    //this.count += quantity;
+    this.construction = {};
+    this.construction.start = new Date().getTime();
+    this.construction.end = this.construction.start + 2000 * quantity;
+    this.construction.quantity = quantity;
     return mutatedState;
   }
 
-  canBeBuilt(ressources) {
+  canBeBuilt(ressources, quantity = 1) {
     //on va aller voir chaque ressources du cost pour voir si on en as assez
     var enoughRessources = true;
     for (var ressourceId in this.cost) {
-      if (ressources[ressourceId].quantity < this.cost[ressourceId]) {
+      if (
+        ressources[ressourceId].quantity <
+        this.cost[ressourceId] * quantity
+      ) {
         enoughRessources = false;
       }
     }
@@ -73,7 +93,7 @@ module.exports = class Building {
               <BuildingStatus building={this} />
               <br />
               <br />
-              <BuildingBuildButtonContainer id={id} />
+              <BuildingBuildButtonContainer id={id} number={1} />
             </p>
           </div>
           <div className="col s6">

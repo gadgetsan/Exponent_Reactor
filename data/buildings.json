@@ -1,10 +1,10 @@
 [
   {
     "name": "Solar Panel",
-    "count": 100000,
+    "count": 4,
     "active": 1,
     "quantities": {
-      "0": 1
+      "0": 100
     },
     "cost": {
       "6": 5
@@ -126,6 +126,20 @@
     },
     "cost": {
       "6": 500
+    }
+  },
+  {
+    "name": "Battery",
+    "count": 0,
+    "active": 0,
+    "type": "Storage",
+    "storage": {
+      "ressource": 0,
+      "quantity": 5000
+    },
+    "quantities": {},
+    "cost": {
+      "6": 10
     }
   }
 ]

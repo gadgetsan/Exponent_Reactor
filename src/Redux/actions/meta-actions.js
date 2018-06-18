@@ -1,53 +1,58 @@
-export const META_SAVE = "META_SAVE";
-export const META_LOAD = "META_LOAD";
-export const META_CLEAR = "META_CLEAR";
+export const SAVE = "META_SAVE";
+export const LOAD = "META_LOAD";
+export const CLEAR = "META_CLEAR";
 import BuildingFactory from "../../Mechanic/Buildings/BuildingFactory";
+import RessourceFactory from "../../Mechanic/Ressources/RessourceFactory";
 
 export function saveGame() {
   return {
-    type: META_SAVE
+    type: SAVE
   };
 }
 
 export function loadGame() {
   return {
-    type: META_LOAD
+    type: LOAD
   };
 }
 
 export function clearGame() {
   return {
-    type: META_CLEAR
+    type: CLEAR
   };
 }
-export function META_SAVE_REDUCER(state, action) {
+export function SAVE_REDUCER(state, action) {
   console.log("SAVE");
   var mutatedState = JSON.parse(JSON.stringify(state));
 
   var sessionObject = JSON.stringify({
     ressources: state.ressources,
-    buildings: state.buildings
+    buildings: state.buildings,
+    population: state.population
   });
 
   localStorage.setItem("Reactor", sessionObject);
 }
 
-export function META_LOAD_REDUCER(state, action) {
+export function LOAD_REDUCER(state, action) {
   console.log("LOAD");
   var mutatedState = Object.assign({}, state);
   var loadedData = JSON.parse(localStorage.getItem("Reactor"));
   return {
     ...state,
-    ressources: loadedData.ressources.map(ressource => {
-      return ressource;
+    ressources: loadedData.ressources.map((ressourceMeta, id) => {
+      return RessourceFactory(ressourceMeta, id);
     }),
-    buildings: loadedData.buildings.map(buildingMeta => {
-      return BuildingFactory(buildingMeta);
+    buildings: loadedData.buildings.map((buildingMeta, id) => {
+      return BuildingFactory(buildingMeta, id);
+    }),
+    population: loadedData.buildings.map(people => {
+      return people;
     })
   };
 }
 
-export function META_CLEAR_REDUCER(state, action) {
+export function CLEAR_REDUCER(state, action) {
   console.log("CLEAR");
   localStorage.removeItem("Reactor");
   return {

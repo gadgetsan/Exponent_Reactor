@@ -14,7 +14,7 @@ const mapStateToProps = function(state, ownProps) {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     build: () => {
-      dispatch(buildBuilding(ownProps.id));
+      dispatch(buildBuilding(ownProps.id, ownProps.number));
     }
   };
 };
@@ -25,6 +25,7 @@ const render = props => {
       building={props.buildings[props.id]}
       ressources={props.ressources}
       build={props.build}
+      number={props.number}
     />
   );
 };

@@ -1,10 +1,11 @@
 [
   {
-    "name": "Energy",
+    "name": "Power",
     "quantity": 0,
-    "unit": "J",
+    "unit": "W",
     "icon": "bolt",
-    "color": "amber"
+    "color": "amber",
+    "quota": 100
   },
   {
     "name": "Coal",

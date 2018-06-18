@@ -1,21 +1,21 @@
-export const BUILDINGS_TICK = "BUILDINGS_TICK";
-export const BUILD_BUILDING = "BUILD_BUILDING";
+export const TICK = "BUILDINGS_TICK";
+export const BUILD = "BUILD_BUILDING";
 
 export function buildingTick(time) {
   return {
-    type: BUILDINGS_TICK,
+    type: TICK,
     payload: { time }
   };
 }
 
 export function buildBuilding(buildingId) {
   return {
-    type: BUILD_BUILDING,
+    type: BUILD,
     payload: { buildingId }
   };
 }
 
-export function BUILDING_TICK_REDUCER(state, action) {
+export function TICK_REDUCER(state, action) {
   //pour chaque buuilding de notre Etat, on va effectuer son tick
   var mutatedState = Object.assign({}, state);
   for (var i in state.buildings) {
@@ -35,7 +35,7 @@ export function BUILDING_TICK_REDUCER(state, action) {
   };
 }
 
-export function BUILD_BUILDING_REDUCER(state, action) {
+export function BUILD_REDUCER(state, action) {
   var mutatedState = Object.assign({}, state);
   var building = state.buildings[action.payload.buildingId];
   mutatedState = building.build(1, state, mutatedState);
