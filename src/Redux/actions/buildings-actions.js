@@ -1,5 +1,6 @@
 export const TICK = "BUILDINGS_TICK";
 export const BUILD = "BUILD_BUILDING";
+export const RESEARCH = "RESEARCH_BUILDING";
 
 export function buildingTick(time) {
   return {
@@ -12,6 +13,13 @@ export function buildBuilding(buildingId) {
   return {
     type: BUILD,
     payload: { buildingId }
+  };
+}
+
+export function researchBuilding(researchBuildingId, buildingId) {
+  return {
+    type: RESEARCH,
+    payload: { researchBuildingId, buildingId }
   };
 }
 
@@ -44,6 +52,21 @@ export function BUILD_REDUCER(state, action) {
     ressources: mutatedState.ressources.map(ressource => {
       return ressource;
     }),
+    buildings: mutatedState.buildings.map(building => {
+      return building;
+    })
+  };
+}
+
+export function RESEARCH_REDUCER(state, action) {
+  var mutatedState = Object.assign({}, state);
+  var building = state.buildings[action.payload.buildingId];
+  var researchBuilding = state.buildings[action.payload.researchBuildingId];
+  console.dir(action);
+  mutatedState = building.doResearch(state, mutatedState);
+  mutatedState = researchBuilding.doResearch(state, mutatedState);
+  return {
+    ...state,
     buildings: mutatedState.buildings.map(building => {
       return building;
     })

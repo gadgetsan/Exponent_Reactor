@@ -74,6 +74,10 @@ export default function(state = initialState, action) {
       return BUILDINGS_ACTIONS.BUILD_REDUCER(state, action);
       break;
     }
+    case BUILDINGS_ACTIONS.RESEARCH: {
+      return BUILDINGS_ACTIONS.RESEARCH_REDUCER(state, action);
+      break;
+    }
     case META_ACTIONS.SAVE: {
       return META_ACTIONS.SAVE_REDUCER(state, action);
       break;

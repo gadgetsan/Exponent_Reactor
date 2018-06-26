@@ -34,9 +34,6 @@ module.exports = class Storage extends Building {
               <BuildingBuildButtonContainer id={id} number={1} />
             </p>
           </div>
-          <div className="col s6">
-            <p>{JSON.stringify(this)}</p>
-          </div>
         </div>
       </div>
     );

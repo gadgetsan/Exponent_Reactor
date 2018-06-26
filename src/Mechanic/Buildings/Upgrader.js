@@ -5,12 +5,10 @@ import BuildingBuildButtonContainer from "../../Components/Containers/BuildingBu
 import BuildingResearchListContainer from "../../Components/Containers/BuildingResearchListContainer";
 import MiniRessourceContainer from "../../Components/Containers/MiniRessourceContainer";
 
-module.exports = class Lab extends Building {
+module.exports = class Upgrader extends Building {
   constructor(meta, id) {
     super(meta, id);
   }
-
-  researchTaskDone(quantity, oldState, mutatedState) {}
 
   getModal(id) {
     return (
@@ -27,7 +25,6 @@ module.exports = class Lab extends Building {
               <hr />
               <b>Buildings</b>
               <br />
-              <BuildingResearchListContainer researchBuildingId={id} />
             </p>
           </div>
         </div>

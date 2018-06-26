@@ -38,15 +38,17 @@ function App(props) {
               <TabElement
                 tabs={[
                   {
-                    name: "Current",
+                    name: "Built",
                     component: (
                       <BuildingListContainer filter={b => b.count > 0} />
                     )
                   },
                   {
-                    name: "Unused",
+                    name: "Researched",
                     component: (
-                      <BuildingListContainer filter={b => b.count < 1} />
+                      <BuildingListContainer
+                        filter={b => b.count < 1 && b.research.researched}
+                      />
                     )
                   }
                 ]}

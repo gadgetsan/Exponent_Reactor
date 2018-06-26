@@ -1,0 +1,101 @@
+[
+  {
+    "name": "Power",
+    "quantity": 0,
+    "unit": "W",
+    "icon": "bolt",
+    "color": "amber",
+    "quota": 400
+  },
+  {
+    "name": "Coal",
+    "quantity": 0,
+    "unit": "g",
+    "icon": "certificate"
+  },
+  {
+    "name": "Water",
+    "quantity": 0,
+    "unit": "l",
+    "icon": "tint",
+    "color": "blue"
+  },
+  {
+    "name": "Oxygen",
+    "quantity": 1,
+    "unit": "l",
+    "icon": "dot-circle",
+    "color": "blue"
+  },
+  {
+    "name": "Hydrogen",
+    "quantity": 0,
+    "unit": "l",
+    "icon": "dot-circle",
+    "color": "red"
+  },
+  {
+    "name": "Iron Ore",
+    "quantity": 0,
+    "unit": "g",
+    "icon": "certificate",
+    "color": "grey"
+  },
+  {
+    "name": "Iron",
+    "quantity": 150000,
+    "unit": "g",
+    "icon": "adjust",
+    "color": "grey"
+  },
+  {
+    "name": "Copper Ore",
+    "quantity": 0,
+    "unit": "g",
+    "icon": "certificate",
+    "color": "orange"
+  },
+  {
+    "name": "Copper",
+    "quantity": 0,
+    "unit": "g",
+    "icon": "adjust",
+    "color": "orange"
+  },
+  {
+    "name": "Nitrogen",
+    "quantity": 0,
+    "unit": "l",
+    "icon": "dot-circle",
+    "color": "orange"
+  },
+  {
+    "name": "Ammonia",
+    "quantity": 0,
+    "unit": "l",
+    "icon": "braille",
+    "color": "purple"
+  },
+  {
+    "source": "http://www.madehow.com/Volume-3/Fertilizer.html",
+    "name": "Nitric Acid",
+    "quantity": 0,
+    "unit": "l",
+    "icon": "burn",
+    "color": "green"
+  },
+  {
+    "name": "Ammonium Nitrate",
+    "quantity": 0,
+    "unit": "g",
+    "icon": "square",
+    "color": "green"
+  },
+  {
+    "name": "Fertilizer",
+    "quantity": 0,
+    "unit": "g",
+    "icon": "gem",
+    "color": "green"
+  }
+]

@@ -3,6 +3,7 @@ import React from "react";
 import BuildingStatus from "../../Components/UI/BuildingStatus";
 import BuildingBuildButtonContainer from "../../Components/Containers/BuildingBuildButtonContainer";
 import MiniRessourceContainer from "../../Components/Containers/MiniRessourceContainer";
+import TimeDisplay from "../../Components/UI/TimeDisplay";
 
 module.exports = class Building {
   constructor(meta, id) {
@@ -13,18 +14,21 @@ module.exports = class Building {
     this.quantities = meta.quantities;
     this.active = meta.active;
     this.type = meta.type;
+    this.research = meta.research;
+    this.buildData = meta.buildData;
+  }
+  buildTime() {
+    return this.buildData.time * Math.pow(this.buildData.factor, this.count);
   }
 
   tick(delay, oldState, mutatedState) {
     //on va commencer par aller voir le processus de production pour savoir quelle quantité de ce building vont être mis en operation
 
     //on va aller voir si on avais une construction
-    if (
-      this.construction != undefined &&
-      this.construction.end < new Date().getTime()
-    ) {
-      this.construct(this.construction.quantity, oldState, mutatedState);
-      this.construction = undefined;
+    if (this.task != undefined && this.task.end < new Date().getTime()) {
+      var functionName = this.task.type + "TaskDone";
+      this[functionName](this.task.quantity, oldState, mutatedState);
+      this.task = undefined;
     }
     var processNum = this.count;
     for (var id in this.quantities) {
@@ -47,24 +51,47 @@ module.exports = class Building {
     return mutatedState;
   }
 
-  construct(quantity, oldState, mutatedState) {
+  buildTaskDone(quantity, oldState, mutatedState) {
     this.count += quantity;
+  }
+  researchTaskDone(quantity, oldState, mutatedState) {
+    this.research.researched = true;
   }
 
   build(quantity, oldState, mutatedState) {
+    var buildTime = this.buildTime();
     //on commence par payer le cout
     for (var ressourceId in this.cost) {
       mutatedState.ressources[ressourceId].quantity -= this.cost[ressourceId];
     }
     //this.count += quantity;
-    this.construction = {};
-    this.construction.start = new Date().getTime();
-    this.construction.end = this.construction.start + 2000 * quantity;
-    this.construction.quantity = quantity;
+    this.task = {};
+    this.task.start = new Date().getTime();
+    this.task.end = this.task.start + buildTime * quantity;
+    this.task.quantity = quantity;
+    this.task.type = "build";
+    return mutatedState;
+  }
+
+  doResearch(oldState, mutatedState) {
+    var buildTime = this.buildTime();
+    //on commence par payer le cout pour une construction?
+    for (var ressourceId in this.cost) {
+      mutatedState.ressources[ressourceId].quantity -= this.cost[ressourceId];
+    }
+    //this.count += quantity;
+    this.task = {};
+    this.task.start = new Date().getTime();
+    this.task.end = this.task.start + buildTime;
+    this.task.quantity = 1;
+    this.task.type = "research";
     return mutatedState;
   }
 
   canBeBuilt(ressources, quantity = 1) {
+    if (this.task != undefined) {
+      return false;
+    }
     //on va aller voir chaque ressources du cost pour voir si on en as assez
     var enoughRessources = true;
     for (var ressourceId in this.cost) {
@@ -76,6 +103,10 @@ module.exports = class Building {
       }
     }
     return enoughRessources;
+  }
+
+  canStartNewTask() {
+    return this.task == undefined && this.count > 0;
   }
 
   getModal(id) {
@@ -141,9 +172,6 @@ module.exports = class Building {
                   return [accu, elem];
                 }, null)}
             </div>
-          </div>
-          <div className="col s6">
-            <p>{JSON.stringify(this)}</p>
           </div>
         </div>
       </div>

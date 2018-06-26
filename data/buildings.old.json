@@ -1,0 +1,145 @@
+[
+  {
+    "name": "Solar Panel",
+    "count": 4,
+    "active": 1,
+    "quantities": {
+      "0": 100
+    },
+    "cost": {
+      "6": 5
+    }
+  },
+  {
+    "name": "Electrolyser",
+    "count": 0,
+    "active": 1,
+    "quantities": {
+      "0": -100,
+      "2": -2000,
+      "3": 1000,
+      "4": 2000
+    },
+    "cost": {
+      "3": 2,
+      "6": 1500,
+      "8": 1500
+    }
+  },
+  {
+    "name": "Water Pump",
+    "count": 0,
+    "active": 1,
+    "quantities": {
+      "0": -20,
+      "2": 100
+    },
+    "cost": {
+      "6": 100
+    }
+  },
+  {
+    "name": "Iron Ore Extractor",
+    "count": 100,
+    "active": 1,
+    "quantities": {
+      "0": -1,
+      "5": 1000
+    },
+    "cost": {
+      "6": 5000
+    }
+  },
+  {
+    "name": "Iron Refinery",
+    "count": 50,
+    "active": 1,
+    "quantities": {
+      "0": -5,
+      "5": -5000,
+      "6": 1000
+    },
+    "cost": {
+      "6": 50000
+    }
+  },
+  {
+    "name": "Copper Ore Extractor",
+    "count": 1,
+    "active": 1,
+    "quantities": {
+      "0": -10,
+      "7": 1
+    },
+    "cost": {
+      "6": 100
+    }
+  },
+  {
+    "name": "Copper Refinery",
+    "count": 0,
+    "active": 1,
+    "quantities": {
+      "0": -50,
+      "5": -10,
+      "8": 1
+    },
+    "cost": {
+      "6": 500
+    }
+  },
+  {
+    "name": "Ammonia Extractor",
+    "count": 0,
+    "active": 1,
+    "quantities": {
+      "0": -10,
+      "10": 10
+    },
+    "cost": {
+      "6": 500
+    }
+  },
+  {
+    "name": "Ammonia Burner",
+    "count": 0,
+    "active": 1,
+    "quantities": {
+      "0": -25,
+      "10": -10,
+      "2": -5,
+      "3": -1,
+      "4": 1,
+      "9": 5
+    },
+    "cost": {
+      "6": 500
+    }
+  },
+  {
+    "name": "Research Lab",
+    "type": "lab",
+    "count": 0,
+    "active": 1,
+    "quantities": {
+      "0": -25
+    },
+    "cost": {
+      "6": 500
+    }
+  },
+  {
+    "name": "Battery",
+    "count": 0,
+    "active": 0,
+    "type": "Storage",
+    "storage": {
+      "ressource": 0,
+      "quantity": 5000
+    },
+    "quantities": {},
+    "cost": {
+      "6": 10
+    }
+  }
+]
